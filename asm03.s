@@ -10,7 +10,7 @@ section .text
 _start:
 
     pop ecx             ; argc in ecx
-    add esp, 4          ; on bouge le pointeur de la stack à esp + 4 pour récupere l'adresse de arg1
+    add esp, 4          ; on bouge le pointeur et on récupere l'adresse de arg1
     mov ecx, [esp]      ; On recupere la valeur de arg1 dans ecx
     
     cmp byte[ecx], 0x34 
