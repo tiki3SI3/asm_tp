@@ -1,7 +1,6 @@
 section .data
-    message db '1337', 10section .data
-    message db '1337', 0
-
+    message db '1337', 10
+ 
 global _start
  
 section .text
@@ -12,8 +11,9 @@ _start:
     mov edx, 4 ; longueur du message
 
     int 0x80 ; appel système write
-    xor eax, 0 ; met eax à 0
-    ret ; retourne le contenu de eax, qui est 0
+    mov eax, 1 ; code pour l'appel système exit
+    xor ebx, ebx ; code de retour 0
+    int 0x80 ; appel système exit
 
 
 
