@@ -9,27 +9,25 @@ global _start
 
 section .text
 _start:
-    pop ecx             
-    add esp, 4          
-    mov ecx, [esp]      
-    
-    cmp byte[ecx], 0x34 
+    mov eax, 3
+    mov ebx, 0
+    mov ecx, input
+    mov edx, 4
+    int 0x80
+
+    cmp word [input], 0x3234
     jne exit
-    cmp byte[ecx+1], 0x32
-    jne exit
-    
+
     mov eax, 4
     mov ebx, 1
     mov ecx, string
     mov edx, string_len
-    int 80h
-    
-    mov eax, 1
-    mov ebx, 0
-    int 80h
-    
-   
+    int 0x80
+
+    mov eax, 0
+    jmp exit
+
 exit:
+    mov ebx, eax
     mov eax, 1
-    mov ebx, 1
-    int 80h
+    int 0x80
