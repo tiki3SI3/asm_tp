@@ -1,5 +1,3 @@
-; Affiche 1337 et retourne 0 si il reçoit 42 en entrée sinon 1
-
 section .bss
     input resb 3
     len equ $-input
@@ -29,6 +27,10 @@ loop_chars:
     inc ecx
     cmp al, 0
     jne loop_chars
+
+    ; vérifier si la longueur est exactement égale à la longueur de "42"
+    cmp ecx, len
+    jne not_equal
 
 equal_42:
     mov eax, 4
