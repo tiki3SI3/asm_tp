@@ -16,6 +16,4 @@ _start:
     ret ; retourne le contenu de eax, qui est 0
 
 
-global _start
- 
 
