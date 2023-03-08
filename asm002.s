@@ -1,13 +1,13 @@
 global_start
 
-section .données
+section .data
 	msg : bd "1337", 10
 
 rubrique .bss
 	buf : resb 4
 
 section .texte
-_commencer :
+_start :
 	;lire stdin
 	déplacer eax, 3
 	mov ebx, 0
