@@ -1,36 +1,36 @@
 section .data
-    chaîne de données '1337', 0
-    chaîne_len équi $-chaîne
-rubrique .bss
-    entrée resb 4
+    string db '1337', 0
+    string_len equ $-string
+section .bss
+    input resb 4 ; allouer 4 octets pour stocker l'entree utilisateur
 
-global_start
+global _start
 
-section .texte
+section .text
 _start:
 
-    ecx pop             
-    ajouter esp, 4          
-    mov ecx, [esp]      
+    pop ecx             ; argc in ecx
+    add esp, 4          ; on bouge le pointeur de la stack à esp + 4 pour récupere l'adresse de arg1
+    mov ecx, [esp]      ; On recupere la valeur de arg1 dans ecx
     
-    cmp octet[ecx], 0x34
-    sortie jne
-    cmp octet[ecx+1], 0x32
-    sortie jne
+    cmp byte[ecx], 0x34 
+    jne exit
+    cmp byte[ecx+1], 0x32
+    jne exit
     
-    déplacer eax, 4
+    mov eax, 4
     mov ebx, 1
-    mov ecx, chaîne
+    mov ecx, string
     mov edx, string_len
-    entier 0x80
+    int 80h
     
-    déplacer eax, 1
+    mov eax, 1
     mov ebx, 0
-    entier 0x80
+    int 80h
     
    
-sortie:
+exit:
     
-    déplacer eax, 1
+    mov eax, 1
     mov ebx, 1
-    entier 0x80
+    int 80h
