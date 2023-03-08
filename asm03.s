@@ -7,7 +7,7 @@ rubrique .bss
 global_start
 
 section .texte
-_commencer:
+_start:
 
     ecx pop             
     ajouter esp, 4          
