@@ -1,10 +1,10 @@
-section .données
+section .data
     base de données de messages '1337', 10
 
 global_start
  
 section .texte
-_commencer:
+_start:
     déplacer eax, 4 ; code pour l'appel système écrire
     mov ebx, 1 ; descripteur de fichier stdout
     mov ecx, message ; pointeur vers le message
