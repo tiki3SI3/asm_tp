@@ -1,4 +1,4 @@
-section .données
+section .data
     chaîne de données '1337', 0
     chaîne_len équi $-chaîne
 rubrique .bss
