@@ -1,6 +1,6 @@
-global_start
+global _start
 
-section .texte
+section .text
 _start:
 	mov eax, 1
 	mov ebx, 0
